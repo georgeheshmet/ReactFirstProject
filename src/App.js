@@ -199,7 +199,7 @@ class SearchWindow extends React.Component{
                    {this.state.BooksFound.map((book)=>(
                     //  <li key={book.id}>{`${book.title} and  ${book.authors} and "url(${book.imageLinks.smallThumbnail})"`}</li>
                     books.filter((shelvebook)=>(shelvebook.id===book.id)).length!==0?
-                    <li> key={book.id}
+                    <li key={book.id}>
                   <Book   bookitem={book} bookCategory={books.filter((shelvebook)=>(shelvebook.id===book.id))[0].shelf} UpdateCat={this.props.UpdateCat}/>
                   </li>:
                   
