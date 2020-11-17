@@ -90,3 +90,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Project install and run
+
+to install dependencies-> npm install
+tp run project -> npm start
+
+this project allow you to view all books currently in your reading shelves: want to read, alread read, currently reading and allow you to change the book between shelves 
+this project allows you to sercch for specifi books that are not on your reading shelves and allow you to add books from search results to your shelves
+if abook in the search results is in your shelveyou will be able to check which shelve using the drop down list on each book, otherwise it will shoe "none"
