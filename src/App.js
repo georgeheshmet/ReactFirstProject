@@ -19,8 +19,9 @@ class BooksApp extends React.Component {
   }
 
   UpdateCat=(book,shelf)=>{
-    BooksAPI.update(book,shelf).then((data)=>(console.log(data)))
+    BooksAPI.update(book,shelf).then(()=>(window.location.reload()))
     
+    //window.location.reload();
   }
     
   componentDidMount(){
@@ -53,7 +54,9 @@ class Book extends React.Component {
   }
   HandelUpdate=(book,shelf)=>{
   this.setState(()=>({BookCat:shelf}))
+  // let PrevShelf=book.shelf
   this.props.UpdateCat(book,shelf) 
+  // this.props.UpdateCatUI(PrevShelf,shelf)
   }
   render() {
 
@@ -90,9 +93,21 @@ class Book extends React.Component {
   }
 }
 class Category extends React.Component{
+state={
+  CatChanged:false
+}
 
+// UpdateCatUI(oldShelv,newshelve){
+//   if (this.props.category===oldShelv||this.props.category===newshelve){
+//     this.setState(()=>({CatChanged:true}))
+//   }
+// }
 
-
+  componentDidMount(){
+      if(this.state.CatChanged===true){
+        this.setState(()=>({CatChanged:false}))
+      }
+    }
   render(){
     const {books, UpdateCat,category} =this.props
     return(
@@ -102,7 +117,8 @@ class Category extends React.Component{
   <ol className="books-grid">
     {books.filter((book)=>(book.shelf===category.value)).map((book)=>(
       <li key={book.id}>
-        <Book key={book.id} bookitem={book} UpdateCat={UpdateCat} bookCategory={book.shelf}/>
+        {/* <Book key={book.id} bookitem={book} UpdateCat={UpdateCat} bookCategory={book.shelf} UpdateCatUI={this.UpdateCatUI}/> */}
+        <Book key={book.id} bookitem={book} UpdateCat={UpdateCat} bookCategory={book.shelf} />
         </li>
     ))}
 
@@ -118,6 +134,7 @@ class ShelvesContainer extends React.Component{
     books: PropTypes.array.isRequired,
     UpdateCat: PropTypes.func.isRequired
 }
+
   render(){
     return(
       <div className="list-books">
