@@ -18,9 +18,19 @@ class BooksApp extends React.Component {
     
   }
 
+
   UpdateCat=(book,shelf)=>{
-    BooksAPI.update(book,shelf).then(()=>(window.location.reload()))
-    
+    BooksAPI.update(book,shelf)
+    if(this.state.books.indexOf(book)){
+      const  newBooks= this.state.books.map((bookx)=>{
+         if(book.id===bookx.id){
+           bookx.shelf=shelf
+         }
+         return bookx
+      })
+        this.setState(()=>({books: newBooks}))
+        
+      }
     //window.location.reload();
   }
     
